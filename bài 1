@@ -1,0 +1,35 @@
+#include <stdio.h>
+#include <math.h>
+// Ham kiem tra mot so co phai la so nguyen to hay không //
+int prime(int n) {
+    if (n < 2)
+        return 0;// Neu n nho hon 2 thi dd khong phai la so nguyen to //
+
+    int m = (int)sqrt(n);// Tinh can bac hai cua n //
+    int i;
+    for ( i = 2; i <= m; i++) {
+        if (n % i == 0)
+            return 0;// Neu n chia het cho i thi do khong phai la so nguyen to //
+    }
+
+    return 1;// Neu khong co dieu kien nao o tren duoc dap ung thi n la so nguyen to //
+}
+
+int main() {
+    int n; 
+    // Lay so nguyen duong tu nguoi dung, dam bao so nguyen do lon hon hoac bang 2 //
+    do {
+        printf("Nhap so nguyen duong (n >= 2): ");
+        scanf("%d", &n);
+    } while (n < 2);
+    // In cac so nguyen to tu 2 den n //
+    printf("Cac so nguyen to tu 2 den %d la:\n", n);
+    int i;
+    for ( i = 2; i <= n; i++) {
+        if (prime(i)) {
+            printf("%d ", i);// Neu i la so nguyen to thi in ra //
+        }
+    }
+
+    return 0;
+}
