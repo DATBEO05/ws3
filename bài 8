@@ -1,0 +1,39 @@
+#include <stdio.h>
+
+// Nguyen mau ham //
+double makeDouble(int ipart, int fraction);
+
+int main() {
+    int ipart, fraction;
+
+    // Nhap gia tri cho phan nguyen //
+    printf("Nhap vao phan nguyen: ");
+    scanf("%d", &ipart);
+
+    // Nhap gia tri cho phan thap phan (phai la so duong) //
+    do {
+        printf("Nhap vao phan thap phan (phai la so duong): ");
+        scanf("%d", &fraction);
+    } while (fraction < 0);
+
+    // Tao so thuc va in ra man hinh //
+    double value = makeDouble(ipart, fraction);
+    printf("So thuc tuong ung la: %.2lf\n", value);
+
+    return 0;
+}
+
+// Ham de tao so thuc tu phan nguyen va phan thap phan //
+double makeDouble(int ipart, int fraction) {
+    double d_f = (double)fraction;
+
+    while (d_f >= 1) {
+        d_f = d_f / 10; // Tao phan thap phan < 1 //
+    }
+
+    if (ipart < 0) {
+        return ipart - d_f; // Truong hop ipart am //
+    } else {
+        return ipart + d_f; // Truong hop ipart duong //
+    }
+}
