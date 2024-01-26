@@ -1,0 +1,40 @@
+#include <stdio.h>
+
+// Nguyen mau ham //
+int isFibonacci(int n);
+
+int main() {
+    int n;
+
+    // Nhap gia tri cho so nguyen duong n //
+    do {
+        printf("Nhap vao mot so nguyen duong: ");
+        scanf("%d", &n);
+    } while (n < 1);
+
+    // Kiem tra xem n co la phan tu cua day Fibonacci hay khong //
+    if (isFibonacci(n) == 1) {
+        printf("Day la mot phan tu cua day Fibonacci.\n");
+    } else {
+        printf("Day khong phai la mot phan tu cua day Fibonacci.\n");
+    }
+
+    return 0;
+}
+
+// Ham de kiem tra xem mot so nguyen duong co phai la mot phan tu cua day Fibonacci hay khong //
+int isFibonacci(int n) {
+    int t1 = 1, t2 = 1, f = 1;
+
+    if (n == 1) {
+        return 1; // n thuoc day Fibonacci //
+    }
+
+    while (f < n) {
+        f = t1 + t2;
+        t1 = t2;
+        t2 = f;
+    }
+
+    return n == f; // n == f -> n la phan tu cua day Fibonacci -> tra ve 1 //
+}
