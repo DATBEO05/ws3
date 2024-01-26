@@ -1,0 +1,42 @@
+#include <stdio.h>
+
+// Nguyen mau ham //
+int gcd(int a, int b);
+int lcm(int a, int b);
+
+int main() {
+    int a, b, d, m;
+
+    // Nhap gia tri cho hai so nguyen duong a va b //
+    do {
+        printf("Nhap vao hai so nguyen duong (a b): ");
+        scanf("%d %d", &a, &b);
+    } while (a <= 0 || b <= 0);
+
+    // Tinh gcd va lcm cua a va b //
+    d = gcd(a, b);
+    m = lcm(a, b);
+
+    // In ra ket qua //
+    printf("Uoc so chung lon nhat cua %d va %d la: %d\n", a, b, d);
+    printf("Boi so chung nho nhat cua %d va %d la: %d\n", a, b, m);
+
+    return 0;
+}
+
+// Ham de tinh uoc so chung lon nhat cua hai so nguyen duong //
+int gcd(int a, int b) {
+    while (a != b) {
+        if (a > b) {
+            a -= b;
+        } else {
+            b -= a;
+        }
+    }
+    return a;
+}
+
+// Ham de tinh boi so chung nho nhat cua hai so nguyen duong //
+int lcm(int a, int b) {
+    return (a * b) / gcd(a, b);
+}
