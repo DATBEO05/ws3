@@ -1,0 +1,50 @@
+#include <stdio.h>
+
+// Nguyen mau ham //
+void printMinMaxDigits(int n);
+
+int main() {
+    int n;
+
+    // Nhap gia tri cho so nguyen khong am n //
+    do {
+        printf("Nhap vao mot so nguyen khong am: ");
+        scanf("%d", &n);
+    } while (n < 0);
+
+    // In ra chu so nho nhat va lon nhat cua n //
+    printMinMaxDigits(n);
+
+    return 0;
+}
+
+// Ham de in ra chu so nho nhat va lon nhat cua mot so nguyen khong am //
+void printMinMaxDigits(int n) {
+    int digit; // Bien de trich xuat 1 chu so //
+    int min, max; // Bien ket qua //
+
+    // Lay chu so cuoi cung //
+    digit = n % 10;
+    n = n / 10;
+
+    // Khoi tao ket qua //
+    min = max = digit;
+
+    while (n > 0) {
+        // Lay chu so tiep theo //
+        digit = n % 10;
+        n = n / 10;
+
+        // Cap nhat ket qua //
+        if (min > digit) {
+            min = digit;
+        }
+        if (max < digit) {
+            max = digit;
+        }
+    }
+
+    // In ra chu so nho nhat va lon nhat //
+    printf("Chu so nho nhat: %d\n", min);
+    printf("Chu so lon nhat: %d\n", max);
+}
