@@ -1,0 +1,45 @@
+#include <stdio.h>
+
+// Nguyen mau ham //
+int getRelPos(double x, double y, double r);
+
+int main() {
+    double x, y, r;
+    int result;
+
+    // Nhap gia tri cho toa do x và y cua diem //
+    printf("Nhap vao toa do cua diem (x y): ");
+    scanf("%lf %lf", &x, &y);
+
+    // Nhap gia tri cho ban kinh cua hinh tron (ban kinh phai khong am) //
+    do {
+        printf("Nhap vao ban kinh cua hinh tron (phai khong am): ");
+        scanf("%lf", &r);
+    } while (r < 0);
+
+    // Lay vi tri tuong doi su dung ham getRelPos //
+    result = getRelPos(x, y, r);
+
+    // In ra ket qua dua tren vi tri tuong doi //
+    if (result == 1)
+        printf("Diem nam trong hinh tron\n");
+    else if (result == 0)
+        printf("Diem nam tren hinh tron\n");
+    else
+        printf("Diem nam ngoai hinh tron\n");
+
+    return 0;
+}
+
+// Ham de lay vi tri tuong doi cua mot diem doi voi mot hinh tron //
+int getRelPos(double x, double y, double r) {
+    double d2 = x * x + y * y; // d^2 = x^2 + y^2 //
+    double r2 = r * r;         // r^2 //
+
+    if (d2 < r2)
+        return 1; // d^2 < r^2 -> diem nam trong hinh tron //
+    else if (d2 == r2)
+        return 0; // d^2 = r^2 -> diem nam tren hinh tron //
+
+    return -1; // d^2 > r^2 -> diem nam ngoai hinh tron //
+}
