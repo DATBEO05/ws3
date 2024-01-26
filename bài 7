@@ -1,0 +1,35 @@
+#include <stdio.h>
+
+// Nguyen mau ham //
+int sumDigits(int n);
+
+int main() {
+    int n, sum;
+
+    do {
+        // Nhap gia tri cho so khong am n //
+        printf("Nhap vao mot so khong am (nhap so am de ket thuc): ");
+        scanf("%d", &n);
+
+        if (n >= 0) {
+            // Goi ham sumDigits de tinh tong cac chu so va in ra man hinh //
+            sum = sumDigits(n);
+            printf("Tong cac chu so cua %d la: %d\n", n, sum);
+        }
+    } while (n >= 0);
+
+    return 0;
+}
+
+// Ham de tinh tong cac chu so cua mot so khong am //
+int sumDigits(int n) {
+    int sum = 0;
+
+    do {
+        int remainder = n % 10; // Lay chu so o vi tri don vi //
+        n = n / 10;
+        sum += remainder;
+    } while (n > 0);
+
+    return sum;
+}
