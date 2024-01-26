@@ -1,0 +1,36 @@
+#include <stdio.h>
+
+// Nguyen mau ham //
+double fibo(int n);
+
+int main() {
+    int n;
+
+    // Nhap gia tri cho vi tri n //
+    do {
+        printf("Nhap vao vi tri trong day Fibonacci (n >= 1): ");
+        scanf("%d", &n);
+    } while (n < 1);
+
+    // In ra gia tri tai vi tri n trong day Fibonacci //
+    printf("Gia tri tai vi tri %d trong day Fibonacci la: %.0lf\n", n, fibo(n));
+
+    return 0;
+}
+
+// Ham de tinh gia tri tai vi tri thu n trong day Fibonacci //
+double fibo(int n) {
+    if (n == 1 || n == 2) {
+        return 1.0;
+    }
+
+    int t1 = 1, t2 = 1, f = 1;
+    int i;
+    for ( i = 3; i <= n; i++) {
+        f = t1 + t2;
+        t1 = t2;
+        t2 = f;
+    }
+
+    return (double)f;
+}
